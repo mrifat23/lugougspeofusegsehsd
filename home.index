@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Growth Partners - Elevating Your Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-react/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-bg {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #c026d3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-bg {
+            background-color: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .industry-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .industry-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: #818cf8;
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.5);
+        }
+        #navbar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #c026d3);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #navbar.scrolled::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Brand Name -->
+                <a href="#" class="flex items-center -ml-4" aria-label="Digital Growth Partners Home">
+                   <img src="https://mrifat23.github.io/Logo-Files/Digital%20Growth%20Partners%20(15).svg" alt="Digital Growth Partners Logo" class="h-20 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="nav-link text-slate-300 hover:text-white">Services</a>
+                    <a href="#industries" class="nav-link text-slate-300 hover:text-white">Industries</a>
+                    <a href="#roi" class="nav-link text-slate-300 hover:text-white">Our Value</a>
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg cta-button">Get Started</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <a href="#services" class="block text-center py-3 px-4 text-slate-300 hover:text-white">Services</a>
+            <a href="#industries" class="block text-center py-3 px-4 text-slate-300 hover:text-white">Industries</a>
+            <a href="#roi" class="block text-center py-3 px-4 text-slate-300 hover:text-white">Our Value</a>
+            <a href="#contact" class="block text-center py-3 px-4 text-indigo-400 hover:text-indigo-300">Get Started</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center pt-20 md:pt-0">
+            <div class="container mx-auto px-6 text-center">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+                        From Local Gem to <span class="gradient-text">Digital Landmark</span>
+                    </h2>
+                    <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+                        We provide flexible, ROI-focused digital solutions that transform businesses across all industries into thriving online presences. Start small, scale smart, and watch your revenue grow.
+                    </p>
+                    <div class="mt-10 flex justify-center gap-4">
+                        <a href="#services" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button">Explore Our Services</a>
+                        <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button">Book a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Our Services</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">A Complete Toolkit for Digital Growth</h2>
+                    <p class="text-slate-400 mt-4 max-w-3xl mx-auto">Explore our comprehensive suite of services, designed to build your presence, engage your audience, and drive measurable results. Each service is a building block for your success.</p>
+                </div>
+
+                <!-- Service Category: Business Presence Setup -->
+                <div class="mb-16" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Business Presence Setup</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Google Business Profile</h4>
+                            <p class="text-slate-400 mb-6">The first step to being found online. We put you on the map—literally.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Profile creation and verification</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Keyword & category optimization</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Photo uploads and service listings</span></li>
+                                 <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Training on managing reviews & posts</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Social Media Setup</h4>
+                             <p class="text-slate-400 mb-6">Build your community where they spend their time. We create professional, branded profiles.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Setup on Facebook, Instagram, TikTok, LinkedIn & more</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Compelling bio and profile branding</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>One custom content template to start</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Platform Onboarding</h4>
+                            <p class="text-slate-400 mb-6">Expand your reach on marketplaces and delivery apps that matter to your business.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Setup on Yelp, Fresha, OpenTable & more</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>E-commerce & marketplace integrations</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Menu or service list integration</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Category: Website Design -->
+                 <div class="mb-16" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Website Design & Development</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Small Business Website</h4>
+                             <p class="text-slate-400 mb-6">Your 24/7 digital storefront. Professional, mobile-friendly, and built to convert visitors into customers.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>3-5 custom-designed pages</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Contact form & map integration</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Mobile-responsive design</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Basic SEO setup</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">E-commerce Website</h4>
+                            <p class="text-slate-400 mb-6">Sell your products online with a powerful and easy-to-manage e-commerce platform.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Shopify or WooCommerce setup</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Product uploads & category setup</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Secure payment gateway integration</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Training on order management</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Monthly Maintenance</h4>
+                            <p class="text-slate-400 mb-6">Keep your website secure, fast, and up-to-date with our ongoing maintenance plan.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Regular software updates</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Security monitoring & backups</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Performance checks</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Minor content updates</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Category: Digital Marketing -->
+                 <div class="mb-16" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Digital Marketing</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Paid Advertising</h4>
+                             <p class="text-slate-400 mb-6">Get immediate visibility and attract ready-to-buy customers with targeted ad campaigns.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Google Ads & social media ad management</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Audience research & targeting</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Ad creation and optimization</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Monthly performance reporting</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-bg p-8 rounded-2xl">
+                            <h4 class="text-xl font-bold text-white mb-4">Social Media Management</h4>
+                            <p class="text-slate-400 mb-6">Stay top-of-mind with consistent, engaging content and active community management.</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Content calendar creation & scheduling</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>8-20+ posts per month across platforms</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Community engagement (comments & DMs)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Growth and engagement reporting</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries We Serve Section -->
+        <section id="industries" class="py-20 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Tailored Solutions</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Expertise Across All Industries</h2>
+                    <p class="text-slate-400 mt-4 max-w-3xl mx-auto">We adapt our strategies to fit the unique needs of your business, no matter the sector. Your growth is our mission.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+                    <!-- Industry Card -->
+                    <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">💼</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Professional Services</h4>
+                        <p class="text-slate-400 text-sm">For law firms, consultants, and agencies, we build credibility and generate leads through polished websites and targeted LinkedIn campaigns.</p>
+                    </div>
+                    <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">🍽️</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Restaurants & Cafes</h4>
+                        <p class="text-slate-400 text-sm">We drive foot traffic with optimized Google Business profiles, mouth-watering food photography, and engaging social media content.</p>
+                    </div>
+                    <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">🛍️</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Retail & E-commerce</h4>
+                        <p class="text-slate-400 text-sm">From Shopify stores to local boutiques, we increase sales with targeted ads, professional product photography, and seamless online experiences.</p>
+                    </div>
+                    <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">✂️</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Salons & Spas</h4>
+                        <p class="text-slate-400 text-sm">We help you book more appointments by showcasing your work on Instagram and simplifying online booking with platforms like Fresha.</p>
+                    </div>
+                     <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">❤️‍🩹</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Health & Wellness</h4>
+                        <p class="text-slate-400 text-sm">For gyms, studios, and practitioners, we build trust with informative content, manage class schedules, and grow your client base.</p>
+                    </div>
+                    <div class="industry-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center" style="background-color: #4f46e5;">
+                           <span class="text-5xl">🏠</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-3">Home Services</h4>
+                        <p class="text-slate-400 text-sm">We connect contractors, realtors, and cleaners with local homeowners through targeted local SEO and lead-generating websites.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Section -->
+        <section id="roi" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12" data-aos="fade-up">
+                    <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">The ROI Advantage</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">How Your Investment Pays Off</h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">We focus on tangible results. Our strategies are designed to deliver greater visibility, more customers, and increased revenue.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- ROI Item 1 -->
+                    <div class="card-bg p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-customers">50%</h3>
+                        <p class="text-white font-bold mt-3 text-lg">Increase in Customer Calls</p>
+                        <p class="text-slate-400 mt-2">An optimized Google Business Profile can dramatically boost direct inquiries and foot traffic.</p>
+                    </div>
+                    <!-- ROI Item 2 -->
+                    <div class="card-bg p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-visibility">3x</h3>
+                        <p class="text-white font-bold mt-3 text-lg">More Online Visibility</p>
+                        <p class="text-slate-400 mt-2">Consistent social media and a professional website put you in front of thousands of potential local customers.</p>
+                    </div>
+                    <!-- ROI Item 3 -->
+                    <div class="card-bg p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-revenue">20%</h3>
+                        <p class="text-white font-bold mt-3 text-lg">Growth in Monthly Revenue</p>
+                        <p class="text-slate-400 mt-2">By converting online interest into actual sales, our strategies directly impact your bottom line.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Grow Your Business?</h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Let's talk. Fill out the form below or schedule a free 30-minute strategy call to discuss your goals.</p>
+                </div>
+                <div class="max-w-2xl mx-auto card-bg p-8 md:p-12 rounded-2xl" data-aos="fade-up">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label for="service" class="block text-sm font-medium text-slate-300 mb-2">What service are you interested in?</label>
+                            <select id="service" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option>Business Presence Setup</option>
+                                <option>Website Design</option>
+                                <option>Digital Marketing</option>
+                                <option>Content Creation</option>
+                                <option>Consulting & Strategy</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mt-6">
+                            <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Tell us about your business</label>
+                            <textarea id="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <p class="text-slate-400">&copy; 2024 Digital Growth Partners. All Rights Reserved.</p>
+                <div class="flex mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    <a href="#" class="text-slate-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#" class="text-slate-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize AOS (Animate on Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-black', 'bg-opacity-80', 'backdrop-blur-sm', 'shadow-lg', 'scrolled');
+            } else {
+                navbar.classList.remove('bg-black', 'bg-opacity-80', 'backdrop-blur-sm', 'shadow-lg', 'scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Counter animation for ROI section
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                
+                if (obj.id === 'roi-visibility') {
+                    obj.innerHTML = `${value}x`;
+                } else {
+                    obj.innerHTML = `${value}%`;
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const roiSection = document.getElementById('roi');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue(document.getElementById('roi-customers'), 0, 50, 2000);
+                    animateValue(document.getElementById('roi-visibility'), 0, 3, 2000);
+                    animateValue(document.getElementById('roi-revenue'), 0, 20, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(roiSection);
+
+    </script>
+
+</body>
+</html>
