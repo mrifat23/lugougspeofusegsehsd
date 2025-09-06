@@ -1,118 +1,851 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Footer Example</title>
+    <meta name="description" content="Digital Growth Partners provides ROI-focused digital solutions, from Google Business Profile setup to website design and paid advertising, helping local businesses thrive online.">
+    
+    <title>Digital Growth Partners - Elevating Your Business</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* General body styling for context */
         body {
-            margin: 0;
-            font-family: sans-serif;
-            background-color: #f4f4f4;
-            /* Add min-height to push footer to the bottom */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
         }
-
-        /* This is just to fill space so the footer is at the bottom */
-        main {
-            flex-grow: 1;
-            padding: 20px;
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
         }
-
-        /* ================================== */
-        /* === FOOTER STYLES START HERE === */
-        /* ================================== */
-
-        .site-footer {
-            background-color: #2c3e50; /* A dark background color */
-            color: #bdc3c7;          /* A light gray for text */
-            padding: 20px 0;
-            text-align: center;
+        .hero-bg {
+            background-color: #0a0a0a;
         }
-
-        .site-footer .footer-nav {
-            margin: 0;
-            padding: 0;
-            list-style: none; /* Removes bullet points from the list */
-
-            /* Flexbox for layout */
-            display: flex;
-            justify-content: center; /* Centers items horizontally */
-            align-items: center;     /* Centers items vertically */
-            gap: 25px;               /* Space between nav items */
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #c026d3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .site-footer .footer-nav a {
-            color: #ecf0f1;           /* A brighter color for links */
-            text-decoration: none;   /* Removes the underline from links */
-            font-size: 1rem;
-            transition: color 0.3s ease;
+        .card-bg {
+            background-color: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .site-footer .footer-nav a:hover {
-            color: #ffffff;
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 0 25px rgba(129, 140, 248, 0.35);
+        }
+        .interactive-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: #818cf8;
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.5);
+        }
+        #navbar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #c026d3);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #navbar.scrolled::after {
+            opacity: 1;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #4f46e5;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
         }
         
-        .site-footer hr {
-            border: 0;
-            border-top: 1px solid #34495e; /* A slightly lighter border color */
-            margin: 20px auto;
-            width: 90%;
-            max-width: 600px;
+      
+        .footer-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #818cf8;
+            transition: width 0.3s;
+        }
+        .footer-link:hover::after {
+            width: 100%;
         }
 
-        .site-footer .copyright-text {
-            font-size: 0.9rem;
-            margin: 0 15px; /* Adds space on the sides to prevent touching the edge */
+        .learn-more-btn {
+            border: 1px solid #4f46e5;
+            background-color: transparent;
+            color: #cbd5e1; /* slate-300 */
+            transition: all 0.3s ease;
+        }
+        .learn-more-btn:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+        }
+        
+        .choice-input {
+            appearance: none;
+            display: none;
+        }
+        .choice-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #4b5563; /* gray-600 */
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem;
+            color: #9ca3af; /* gray-400 */
+        }
+        .choice-label:hover {
+            border-color: #6366f1; /* indigo-500 */
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .choice-input:checked + .choice-label {
+            background-color: #4f46e5; /* indigo-600 */
+            border-color: #4f46e5;
+            color: white;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+        }
+
+        .input-error {
+            border-color: #ef4444 !important; /* red-500 */
+        }
+        .input-error:focus {
+            --tw-ring-color: #ef4444 !important;
         }
 
 
-        /* ============================================= */
-        /* === MOBILE RESPONSIVE FIXES START HERE === */
-        /* ============================================= */
-
-        /* Apply these styles on screens 600px wide or smaller */
-        @media (max-width: 600px) {
-            
-            /* --- FIX 1: Allow navigation items to wrap --- */
-            .site-footer .footer-nav {
-                flex-wrap: wrap; /* This is the key! It allows items to move to the next line */
-                gap: 15px 20px;  /* Adds vertical (15px) and horizontal (20px) spacing when wrapped */
-            }
-
-            /* --- FIX 2: Reduce font size for copyright text --- */
-            .site-footer .copyright-text {
-                font-size: 0.8rem; /* Make the font slightly smaller so it fits on one line */
-            }
+        /* High-performance pure CSS starfield animation */
+        @keyframes animStar {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
         }
+        #stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            animation-name: animStar;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        #stars1 {
+            animation-duration: 150s;
+            box-shadow: 777px 1585px #FFF, 1735px 443px #FFF, 1667px 1513px #FFF, 1299px 1599px #FFF, 554px 147px #FFF, 128px 1182px #FFF, 1845px 129px #FFF, 477px 1292px #FFF, 1269px 762px #FFF, 1215px 1319px #FFF, 1251px 197px #FFF, 1293px 1083px #FFF, 421px 406px #FFF, 1859px 1344px #FFF, 893px 48px #FFF, 56px 114px #FFF, 114px 1749px #FFF, 1863px 186px #FFF, 1195px 1754px #FFF, 1107px 1482px #FFF, 1459px 1345px #FFF, 1030px 1968px #FFF, 508px 1215px #FFF, 102px 1419px #FFF, 915px 1872px #FFF, 1939px 381px #FFF, 1238px 1018px #FFF, 1001px 1136px #FFF, 1869px 1198px #FFF, 469px 832px #FFF, 877px 585px #FFF, 135px 1443px #FFF, 667px 513px #FFF, 299px 599px #FFF, 1554px 1147px #FFF, 1128px 182px #FFF, 845px 1129px #FFF, 1477px 292px #FFF, 269px 1762px #FFF, 215px 319px #FFF, 251px 1197px #FFF, 293px 83px #FFF, 1421px 1406px #FFF, 859px 344px #FFF, 1893px 1048px #FFF, 1056px 1114px #FFF, 1114px 749px #FFF, 863px 86px #FFF, 195px 754px #FFF, 107px 482px #FFF, 459px 345px #FFF, 30px 968px #FFF, 1508px 215px #FFF, 1102px 419px #FFF, 1915px 872px #FFF, 939px 1381px #FFF, 238px 118px #FFF, 101px 136px #FFF, 169px 198px #FFF, 1469px 232px #FFF;
+        }
+        #stars2 {
+            animation-duration: 100s;
+            box-shadow: 1876px 1435px #FFF, 151px 1055px #FFF, 1683px 1302px #FFF, 137px 1502px #FFF, 1493px 862px #FFF, 1199px 1316px #FFF, 1421px 1190px #FFF, 1205px 1632px #FFF, 113px 1491px #FFF, 715px 1358px #FFF, 1969px 728px #FFF, 1162px 138px #FFF, 1838px 1032px #FFF, 189px 1063px #FFF, 1150px 1668px #FFF, 1445px 1186px #FFF, 1735px 1152px #FFF, 1184px 90px #FFF, 917px 933px #FFF, 1373px 1861px #FFF, 725px 905px #FFF, 1427px 181px #FFF, 1756px 363px #FFF, 497px 1060px #FFF, 1262px 1561px #FFF, 491px 125px #FFF, 129px 1113px #FFF, 1877px 429px #FFF, 979px 1185px #FFF, 175px 112px #FFF, 876px 435px #FFF, 1151px 55px #FFF, 683px 302px #FFF, 1137px 502px #FFF, 493px 1862px #FFF, 199px 116px #FFF, 421px 190px #FFF, 205px 632px #FFF, 1113px 491px #FFF, 1715px 358px #FFF, 969px 1728px #FFF, 162px 1138px #FFF, 838px 32px #FFF, 1189px 163px #FFF, 150px 668px #FFF, 445px 186px #FFF, 735px 152px #FFF, 184px 1090px #FFF, 1917px 1933px #FFF, 373px 861px #FFF, 1725px 1905px #FFF, 427px 1181px #FFF, 756px 1363px #FFF, 1497px 60px #FFF, 262px 561px #FFF, 1491px 1125px #FFF, 1129px 113px #FFF, 877px 1429px #FFF, 1979px 185px #FFF, 75px 1112px #FFF;
+        }
+        #stars3 {
+            animation-duration: 75s;
+            box-shadow: 1069px 1211px #FFF, 736px 1356px #FFF, 1226px 1349px #FFF, 1751px 938px #FFF, 1886px 11px #FFF, 1502px 137px #FFF, 461px 113px #FFF, 1312px 1021px #FFF, 1830px 1495px #FFF, 563px 140px #FFF, 439px 348px #FFF, 1256px 63px #FFF, 584px 475px #FFF, 432px 1833px #FFF, 781px 1118px #FFF, 1092px 1338px #FFF, 621px 1807px #FFF, 1123px 1348px #FFF, 112px 1432px #FFF, 1642px 1477px #FFF, 69px 211px #FFF, 1736px 356px #FFF, 226px 349px #FFF, 751px 1938px #FFF, 886px 1111px #FFF, 502px 1137px #FFF, 1461px 1113px #FFF, 312px 21px #FFF, 830px 495px #FFF, 1563px 1140px #FFF, 1439px 1348px #FFF, 256px 1063px #FFF, 1584px 475px #FFF, 1432px 833px #FFF, 1781px 118px #FFF, 92px 338px #FFF, 1621px 807px #FFF, 123px 348px #FFF, 1112px 432px #FFF, 642px 477px #FFF;
+        }
+
 
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <main>
-        <h1>Your Page Content Goes Here</h1>
-        <p>This is just filler content to push the footer down.</p>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center -ml-4" aria-label="Digital Growth Partners Home">
+                   <img src="https://mrifat23.github.io/Logo-Files/Digital%20Growth%20Partners%20(18).svg" alt="Digital Growth Partners Logo" class="h-20 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+                    <a href="#services" class="nav-link text-slate-300 hover:text-white">Services</a>
+                    <a href="#industries" class="nav-link text-slate-300 hover:text-white">Industries</a>
+                    <a href="#roi" class="nav-link text-slate-300 hover:text-white">Our Value</a>
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg cta-button">Get Started</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white z-50" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-95 pt-24 z-40" role="dialog" aria-modal="true">
+        <nav class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#services" class="text-2xl text-slate-300 hover:text-white">Services</a>
+            <a href="#industries" class="text-2xl text-slate-300 hover:text-white">Industries</a>
+            <a href="#roi" class="text-2xl text-slate-300 hover:text-white">Our Value</a>
+            <a href="#contact" class="text-2xl text-indigo-400 hover:text-indigo-300">Get Started</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+        <section class="hero-bg min-h-screen flex items-center pt-24 pb-12 md:pt-0 md:pb-0 relative overflow-hidden">
+            <div id="stars-container">
+                <div id="stars1" class="stars"></div>
+                <div id="stars2" class="stars"></div>
+                <div id="stars3" class="stars"></div>
+            </div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div data-aos="fade-up">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight font-montserrat">
+                        From Local Gem to <span class="gradient-text">Digital Landmark</span>
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+                        We provide flexible, ROI-focused digital solutions that transform businesses across all industries into thriving online presences. Start small, scale smart, and watch your revenue grow.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="#services" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button w-full sm:w-auto">Explore Our Services</a>
+                        <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button w-full sm:w-auto">Book a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Our Services</h2>
+                    <p class="text-3xl md:text-4xl font-bold text-white mt-2 font-montserrat">A Complete Toolkit for Digital Growth</p>
+                    <p class="text-slate-400 mt-4 max-w-3xl mx-auto">Explore our comprehensive suite of services, designed to build your presence, engage your audience, and drive measurable results. Each service is a building block for your success.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <div class="card-bg interactive-card p-8 rounded-2xl h-full flex flex-col justify-between" data-aos="fade-up">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 font-montserrat text-center">Business Presence Setup</h3>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Google Business Profile creation & optimization</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Social media account setup (Facebook, Instagram, TikTok, LinkedIn, etc.)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Online directory & platform onboarding (UberEats, Yelp, Amazon, Etsy, etc.)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Profile optimization (bios, branding, keywords, links)</span></li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="https://www.digitalgrowthpartners.us/businesspresencesetup.html" class="inline-block font-semibold py-2 px-6 rounded-lg text-sm learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="card-bg interactive-card p-8 rounded-2xl h-full flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 font-montserrat text-center">Website Design & Development</h3>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Landing page and multi-page business websites</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>E-commerce websites (Shopify, WooCommerce, Wix, Squarespace)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Website maintenance & updates</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>SEO optimization (on-page, local SEO)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Analytics setup (Google Analytics, Meta Pixel)</span></li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="https://www.digitalgrowthpartners.us/websitedesignanddevelopment.html" class="inline-block font-semibold py-2 px-6 rounded-lg text-sm learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="card-bg interactive-card p-8 rounded-2xl h-full flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 font-montserrat text-center">Digital Marketing</h3>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Paid Advertising Campaigns:</span></li>
+                                <ul class="space-y-2 pl-6 mt-2">
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Google Ads (Search, Display, YouTube)</span></li>
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Meta Ads (Facebook & Instagram) & TikTok Ads</span></li>
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Retargeting campaigns</span></li>
+                                </ul>
+                                <li class="flex items-start pt-2"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Social media management (content, posting, engagement)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Email marketing campaigns</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Blog writing & SEO content creation</span></li>
+                            </ul>
+                        </div>
+                         <div class="mt-8 text-center">
+                            <a href="https://www.digitalgrowthpartners.us/digitalmarketing.html" class="inline-block font-semibold py-2 px-6 rounded-lg text-sm learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="card-bg interactive-card p-8 rounded-2xl h-full flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 font-montserrat text-center">Content Creation</h3>
+                            <ul class="space-y-4 text-slate-300">
+                                 <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Photography & Videography:</span></li>
+                                 <ul class="space-y-2 pl-6 mt-2">
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Product, store/location, staff & lifestyle shoots</span></li>
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Short-form videos (TikTok/Reels) & promotional videos</span></li>
+                                 </ul>
+                                 <li class="flex items-start pt-2"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Graphic Design:</span></li>
+                                 <ul class="space-y-2 pl-6 mt-2">
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Logos & brand identity</span></li>
+                                    <li class="flex items-start"><svg class="w-4 h-4 text-indigo-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg><span>Flyers, banners, posters & social media templates</span></li>
+                                 </ul>
+                            </ul>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="https://www.digitalgrowthpartners.us/contentcreation.html" class="inline-block font-semibold py-2 px-6 rounded-lg text-sm learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card-bg interactive-card p-8 rounded-2xl h-full flex flex-col justify-between lg:col-span-2" data-aos="fade-up">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 font-montserrat text-center">Growth & Consulting</h3>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Digital strategy roadmap</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Branding & positioning (logos, brand messaging, style guides)</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Monthly growth reports & ROI tracking</span></li>
+                                <li class="flex items-start"><svg class="w-5 h-5 text-indigo-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Consulting sessions (audit, optimization plans, 1:1 support)</span></li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="https://www.digitalgrowthpartners.us/growthandconsulting.html" class="inline-block font-semibold py-2 px-6 rounded-lg text-sm learn-more-btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="industries" class="py-20 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">Tailored Solutions</h2>
+                    <p class="text-3xl md:text-4xl font-bold text-white mt-2 font-montserrat">Expertise Across All Industries</p>
+                    <p class="text-slate-400 mt-4 max-w-3xl mx-auto">We adapt our strategies to fit the unique needs of your business, no matter the sector. Your growth is our mission.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+                    <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="Briefcase emoji">💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Professional Services</h3>
+                        <p class="text-slate-400 text-sm">For law firms, consultants, and agencies, we build credibility and generate leads through polished websites and targeted LinkedIn campaigns.</p>
+                    </div>
+                    <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="Fork and knife with plate emoji">🍽️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Restaurants & Cafes</h3>
+                        <p class="text-slate-400 text-sm">We drive foot traffic with optimized Google Business profiles, mouth-watering food photography, and engaging social media content.</p>
+                    </div>
+                    <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="Shopping bag emoji">🛍️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Retail & E-commerce</h3>
+                        <p class="text-slate-400 text-sm">From Shopify stores to local boutiques, we increase sales with targeted ads, professional product photography, and seamless online experiences.</p>
+                    </div>
+                    <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="Scissors emoji">✂️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Salons & Spas</h3>
+                        <p class="text-slate-400 text-sm">We help you book more appointments by showcasing your work on Instagram and simplifying online booking with platforms like Fresha.</p>
+                    </div>
+                     <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="Heart with bandage emoji">❤️‍🩹</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Health & Wellness</h3>
+                        <p class="text-slate-400 text-sm">For gyms, studios, and practitioners, we build trust with informative content, manage class schedules, and grow your client base.</p>
+                    </div>
+                    <div class="interactive-card card-bg p-8 rounded-2xl flex flex-col items-center text-center">
+                         <div class="w-24 h-24 mb-5 rounded-full flex items-center justify-center bg-indigo-600 bg-opacity-30">
+                           <span class="text-5xl" role="img" aria-label="House emoji">🏠</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Home Services</h3>
+                        <p class="text-slate-400 text-sm">We connect contractors, realtors, and cleaners with local homeowners through targeted local SEO and lead-generating websites.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">The ROI Advantage</h2>
+                    <p class="text-3xl md:text-4xl font-bold text-white mt-2 font-montserrat">How Your Investment Pays Off</p>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">We focus on tangible results. Our strategies are designed to deliver greater visibility, more customers, and increased revenue.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card-bg interactive-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-customers">0%</h3>
+                        <p class="text-white font-bold mt-3 text-lg">Increase in Customer Calls</p>
+                        <p class="text-slate-400 mt-2">An optimized Google Business Profile can dramatically boost direct inquiries and foot traffic.</p>
+                    </div>
+                    <div class="card-bg interactive-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-visibility">0x</h3>
+                        <p class="text-white font-bold mt-3 text-lg">More Online Visibility</p>
+                        <p class="text-slate-400 mt-2">Consistent social media and a professional website put you in front of thousands of potential local customers.</p>
+                    </div>
+                    <div class="card-bg interactive-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-5xl font-extrabold gradient-text" id="roi-revenue">0%</h3>
+                        <p class="text-white font-bold mt-3 text-lg">Growth in Monthly Revenue</p>
+                        <p class="text-slate-400 mt-2">By converting online interest into actual sales, our strategies directly impact your bottom line.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white font-montserrat">Ready to Grow Your Business?</h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Let's connect. Whether you'd like more information or want to schedule a free 30-minute consultation, we're here to help. Fill out the form below to get started.</p>
+                </div>
+                <div class="card-bg interactive-card p-8 md:p-12 rounded-2xl max-w-2xl mx-auto" data-aos="fade-up">
+                    <form id="contact-form" action="https://formspree.io/f/mdklpqrr" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-bold text-slate-300 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <p id="name-error" class="text-red-500 text-sm mt-1 hidden">Full Name is required.</p>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-bold text-slate-300 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(___) ___-____" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <p id="phone-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid 10-digit phone number.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label for="email" class="block text-sm font-bold text-slate-300 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <p id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</p>
+                        </div>
+
+                        <div class="mt-6">
+                            <label for="inquiry-type" class="block text-sm font-bold text-slate-300 mb-2">I would like to:</label>
+                            <select id="inquiry-type" name="inquiry_type" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="get-info">Get more information</option>
+                                <option value="schedule-consultation">Schedule a free 30-min consultation</option>
+                            </select>
+                            <p id="inquiry-error" class="text-red-500 text-sm mt-1 hidden">Please select an option.</p>
+                        </div>
+                        
+                        <div id="info-fields" class="hidden">
+                            <div class="mt-6">
+                                <label class="block text-sm font-bold text-slate-300 mb-4">What services are you interested in?</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <input id="service1" name="services[]" value="Business Presence Setup" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service1" class="ml-3 text-sm text-slate-300">Business Presence Setup</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="service2" name="services[]" value="Website Design" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service2" class="ml-3 text-sm text-slate-300">Website Design</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="service3" name="services[]" value="Digital Marketing" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service3" class="ml-3 text-sm text-slate-300">Digital Marketing</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="service4" name="services[]" value="Content Creation" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service4" class="ml-3 text-sm text-slate-300">Content Creation</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="service5" name="services[]" value="Growth & Consulting" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service5" class="ml-3 text-sm text-slate-300">Growth & Consulting</label>
+                                    </div>
+                                     <div class="flex items-center">
+                                        <input id="service6" name="services[]" value="Other" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
+                                        <label for="service6" class="ml-3 text-sm text-slate-300">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="info-message" class="block text-sm font-bold text-slate-300 mb-2">Do you have any specific questions?</label>
+                                <textarea id="info-message" name="info_questions" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="consultation-fields" class="hidden">
+                            <div class="mt-6">
+                                <label class="block text-sm font-bold text-slate-300 mb-2">Preferred Day(s)</label>
+                                <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                    <div><input type="checkbox" id="day-mon" name="preferred_days[]" value="Monday" class="choice-input"><label for="day-mon" class="choice-label">Mon</label></div>
+                                    <div><input type="checkbox" id="day-tue" name="preferred_days[]" value="Tuesday" class="choice-input"><label for="day-tue" class="choice-label">Tue</label></div>
+                                    <div><input type="checkbox" id="day-wed" name="preferred_days[]" value="Wednesday" class="choice-input"><label for="day-wed" class="choice-label">Wed</label></div>
+                                    <div><input type="checkbox" id="day-thu" name="preferred_days[]" value="Thursday" class="choice-input"><label for="day-thu" class="choice-label">Thu</label></div>
+                                    <div><input type="checkbox" id="day-fri" name="preferred_days[]" value="Friday" class="choice-input"><label for="day-fri" class="choice-label">Fri</label></div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label class="block text-sm font-bold text-slate-300 mb-2">Preferred Time(s)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                    <div><input type="checkbox" id="time1" name="preferred_times[]" value="10-11 AM" class="choice-input"><label for="time1" class="choice-label">10-11 AM EST</label></div>
+                                    <div><input type="checkbox" id="time2" name="preferred_times[]" value="11-12 PM" class="choice-input"><label for="time2" class="choice-label">11-12 PM EST</label></div>
+                                    <div><input type="checkbox" id="time3" name="preferred_times[]" value="12-1 PM" class="choice-input"><label for="time3" class="choice-label">12-1 PM EST</label></div>
+                                    <div><input type="checkbox" id="time4" name="preferred_times[]" value="1-2 PM" class="choice-input"><label for="time4" class="choice-label">1-2 PM EST</label></div>
+                                    <div><input type="checkbox" id="time5" name="preferred_times[]" value="2-3 PM" class="choice-input"><label for="time5" class="choice-label">2-3 PM EST</label></div>
+                                    <div><input type="checkbox" id="time6" name="preferred_times[]" value="3-4 PM" class="choice-input"><label for="time6" class="choice-label">3-4 PM EST</label></div>
+                                    <div><input type="checkbox" id="time7" name="preferred_times[]" value="4-5 PM" class="choice-input"><label for="time7" class="choice-label">4-5 PM EST</label></div>
+                                    <div><input type="checkbox" id="time8" name="preferred_times[]" value="5-6 PM" class="choice-input"><label for="time8" class="choice-label">5-6 PM EST</label></div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="consult-message" class="block text-sm font-bold text-slate-300 mb-2">Tell us about your business needs</label>
+                                <textarea id="consult-message" name="business_needs" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                             <p id="form-submission-error" class="text-red-500 text-sm mb-4 text-center hidden"></p>
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
+                        </div>
+                    </form>
+                    <div id="success-message-info" class="hidden">
+                        <h3 class="text-2xl font-bold gradient-text mb-4 text-center">Thank You!</h3>
+                        <p class="text-indigo-300 text-left">Your request for information has been received. We will be in touch shortly with the details you requested.</p>
+                    </div>
+                     <div id="success-message-consultation" class="hidden">
+                        <h3 class="text-2xl font-bold gradient-text mb-4 text-center">Thank You!</h3>
+                        <p class="text-indigo-300 text-left">Your consultation request has been submitted. We will contact you soon to confirm your appointment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
-        <ul class="footer-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-
-        <hr>
-
-        <div class="copyright-text">
-            &copy; 2025 Your Company Name. All Rights Reserved.
+    <footer class="bg-black border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-center mb-8">
+                <nav class="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-4">
+                    <a href="#services" class="footer-link text-slate-400 hover:text-white transition-colors">Services</a>
+                    <a href="#industries" class="footer-link text-slate-400 hover:text-white transition-colors">Industries</a>
+                    <a href="#roi" class="footer-link text-slate-400 hover:text-white transition-colors">Our Value</a>
+                    <a href="#contact" class="footer-link text-slate-400 hover:text-white transition-colors">Contact</a>
+                </nav>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between">
+                <a href="/" aria-label="Digital Growth Partners Home">
+                   <img src="https://mrifat23.github.io/Logo-Files/Digital%20Growth%20Partners%20(18).svg" alt="Digital Growth Partners Logo" class="h-16 w-auto mb-4 sm:mb-0">
+                </a>
+                <p class="text-slate-400 text-xs sm:text-sm text-center sm:text-right">&copy; <span id="current-year">2025</span> Digital Growth Partners. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+            });
+
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            const toggleMenu = () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                openIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                document.body.style.overflow = isExpanded ? '' : 'hidden';
+            };
+
+            menuButton.addEventListener('click', toggleMenu);
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (menuButton.getAttribute('aria-expanded') === 'true') {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            const navbar = document.getElementById('navbar');
+            let isScrolled = false;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    if (!isScrolled) {
+                        navbar.classList.add('bg-black', 'bg-opacity-80', 'backdrop-blur-sm', 'shadow-lg', 'scrolled');
+                        isScrolled = true;
+                    }
+                } else {
+                    if (isScrolled) {
+                        navbar.classList.remove('bg-black', 'bg-opacity-80', 'backdrop-blur-sm', 'shadow-lg', 'scrolled');
+                        isScrolled = false;
+                    }
+                }
+            }, { passive: true });
+
+            function animateValue(obj, start, end, duration, suffix = '%') {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    obj.innerHTML = `${value}${suffix}`;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const roiSection = document.getElementById('roi');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue(document.getElementById('roi-customers'), 0, 50, 2000);
+                        animateValue(document.getElementById('roi-visibility'), 0, 3, 2000, 'x');
+                        animateValue(document.getElementById('roi-revenue'), 0, 20, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            if(roiSection) {
+                observer.observe(roiSection);
+            }
+
+            const contactForm = document.getElementById('contact-form');
+            const inquiryType = document.getElementById('inquiry-type');
+            const infoFields = document.getElementById('info-fields');
+            const consultationFields = document.getElementById('consultation-fields');
+            const successMessageInfo = document.getElementById('success-message-info');
+            const successMessageConsultation = document.getElementById('success-message-consultation');
+            const nameInput = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            const inquiryError = document.getElementById('inquiry-error');
+            const formSubmissionError = document.getElementById('form-submission-error');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+
+            function validateEmail(email) {
+                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            function validatePhone(phone) {
+                const justDigits = phone.replace(/[^\d]/g, '');
+                return justDigits.length === 10;
+            }
+
+            if (inquiryType) {
+                inquiryType.addEventListener('change', (e) => {
+                    if (!inquiryError.classList.contains('hidden')) {
+                         inquiryError.classList.add('hidden');
+                         inquiryType.classList.remove('input-error');
+                    }
+                    if (e.target.value === 'schedule-consultation') {
+                        infoFields.classList.add('hidden');
+                        consultationFields.classList.remove('hidden');
+                    } else if (e.target.value === 'get-info') {
+                        infoFields.classList.remove('hidden');
+                        consultationFields.classList.add('hidden');
+                    } else {
+                        infoFields.classList.add('hidden');
+                        consultationFields.classList.add('hidden');
+                    }
+                });
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isFormValid = true;
+
+                    // Clear previous errors
+                    nameError.classList.add('hidden');
+                    nameInput.classList.remove('input-error');
+                    emailError.classList.add('hidden');
+                    emailInput.classList.remove('input-error');
+                    phoneError.classList.add('hidden');
+                    phoneInput.classList.remove('input-error');
+                    inquiryError.classList.add('hidden');
+                    inquiryType.classList.remove('input-error');
+                    formSubmissionError.classList.add('hidden');
+
+                    // Validate Name
+                    if (nameInput.value.trim() === '') {
+                        nameError.classList.remove('hidden');
+                        nameInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+                    
+                    // Validate Inquiry Type
+                    if (inquiryType.value === "") {
+                        inquiryError.classList.remove('hidden');
+                        inquiryType.classList.add('input-error');
+                        isFormValid = false;
+                    }
+
+                    // Validate Email
+                    if (!validateEmail(emailInput.value)) {
+                        emailError.classList.remove('hidden');
+                        emailInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+
+                    // Validate Phone if it's not empty
+                    if (phoneInput.value && !validatePhone(phoneInput.value)) {
+                        phoneError.classList.remove('hidden');
+                        phoneInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+
+                    if (!isFormValid) {
+                        return; // Stop submission if any validation fails
+                    }
+
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 mx-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+
+                    const formData = new FormData(contactForm);
+                    const inquiryValue = inquiryType.value;
+                    
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            contactForm.style.display = 'none';
+                            
+                            if (inquiryValue === 'schedule-consultation') {
+                                successMessageConsultation.style.display = 'block';
+                            } else {
+                                successMessageInfo.style.display = 'block';
+                            }
+                        } else {
+                            response.json().then(data => {
+                                console.error('Form submission error:', data);
+                                formSubmissionError.textContent = 'Oops! There was a problem submitting your form. Please try again later.';
+                                formSubmissionError.classList.remove('hidden');
+                            }).catch(() => {
+                                formSubmissionError.textContent = 'Oops! An unknown error occurred. Please try again later.';
+                                formSubmissionError.classList.remove('hidden');
+                            });
+                        }
+                    }).catch(error => {
+                        console.error('Network error:', error);
+                        formSubmissionError.textContent = 'Could not connect to the server. Please check your internet connection.';
+                        formSubmissionError.classList.remove('hidden');
+                    }).finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Send Message';
+                    });
+                });
+            }
+            
+            if (nameInput) {
+                nameInput.addEventListener('input', () => {
+                    if (!nameError.classList.contains('hidden')) {
+                        nameError.classList.add('hidden');
+                        nameInput.classList.remove('input-error');
+                    }
+                });
+            }
+
+            if (emailInput) {
+                emailInput.addEventListener('input', () => {
+                    if (!emailError.classList.contains('hidden')) {
+                        emailError.classList.add('hidden');
+                        emailInput.classList.remove('input-error');
+                    }
+                });
+            }
+
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => {
+                    // Auto-format phone number
+                    let input = e.target.value.replace(/\D/g, '').substring(0, 10);
+                    let formatted = '';
+                    if(input.length > 0) formatted += '(' + input.substring(0,3);
+                    if(input.length > 3) formatted += ') ' + input.substring(3,6);
+                    if(input.length > 6) formatted += '-' + input.substring(6,10);
+                    e.target.value = formatted;
+                    
+                    // Hide error on input
+                    if (!phoneError.classList.contains('hidden')) {
+                        phoneError.classList.add('hidden');
+                        phoneInput.classList.remove('input-error');
+                    }
+                });
+            }
+
+
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 </body>
 </html>
