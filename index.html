@@ -552,7 +552,7 @@
                         </div>
                         
                         <div class="mt-8 text-center">
-                             <p id="form-submission-error" class="text-red-500 text-sm mb-4 text-center hidden">Oops! There was a problem submitting your form. Please try again later.</p>
+                             <p id="form-submission-error" class="text-red-500 text-sm mb-4 text-center hidden"></p>
                             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
                         </div>
                     </form>
@@ -785,7 +785,12 @@
                                 successMessageInfo.style.display = 'block';
                             }
                         } else {
-                           formSubmissionError.classList.remove('hidden');
+                            response.json().then(data => {
+                                console.error('Form submission error:', data);
+                                formSubmissionError.classList.remove('hidden');
+                            }).catch(() => {
+                                formSubmissionError.classList.remove('hidden');
+                            });
                         }
                     }).catch(error => {
                         console.error('Network error:', error);
