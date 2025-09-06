@@ -481,6 +481,7 @@
                                 <option value="get-info">Get more information</option>
                                 <option value="schedule-consultation">Schedule a free 30-min consultation</option>
                             </select>
+                            <p id="inquiry-error" class="text-red-500 text-sm mt-1 hidden">Please select an option.</p>
                         </div>
                         
                         <div id="info-fields" class="hidden">
@@ -675,6 +676,7 @@
             const emailError = document.getElementById('email-error');
             const phoneInput = document.getElementById('phone');
             const phoneError = document.getElementById('phone-error');
+            const inquiryError = document.getElementById('inquiry-error');
 
             function validateEmail(email) {
                 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -688,6 +690,10 @@
 
             if (inquiryType) {
                 inquiryType.addEventListener('change', (e) => {
+                    if (!inquiryError.classList.contains('hidden')) {
+                         inquiryError.classList.add('hidden');
+                         inquiryType.classList.remove('input-error');
+                    }
                     if (e.target.value === 'schedule-consultation') {
                         infoFields.classList.add('hidden');
                         consultationFields.classList.remove('hidden');
@@ -706,6 +712,13 @@
                     e.preventDefault();
                     
                     let isFormValid = true;
+
+                    // Validate Inquiry Type
+                    if (inquiryType.value === "") {
+                        inquiryError.classList.remove('hidden');
+                        inquiryType.classList.add('input-error');
+                        isFormValid = false;
+                    }
 
                     // Validate Email
                     if (!validateEmail(emailInput.value)) {
