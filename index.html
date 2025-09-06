@@ -131,6 +131,43 @@
             color: #fff;
             box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
         }
+        
+        .choice-input {
+            appearance: none;
+            display: none;
+        }
+        .choice-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #4b5563; /* gray-600 */
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem;
+            color: #9ca3af; /* gray-400 */
+        }
+        .choice-label:hover {
+            border-color: #6366f1; /* indigo-500 */
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .choice-input:checked + .choice-label {
+            background-color: #4f46e5; /* indigo-600 */
+            border-color: #4f46e5;
+            color: white;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+        }
+
+        .input-error {
+            border-color: #ef4444 !important; /* red-500 */
+        }
+        .input-error:focus {
+           --tw-ring-color: #ef4444 !important;
+        }
+
 
         /* High-performance pure CSS starfield animation */
         @keyframes animStar {
@@ -198,7 +235,6 @@
         </div>
     </header>
 
-    <!-- UPDATE: Removed the duplicate mobile menu from inside the header -->
     <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-95 pt-24 z-40" role="dialog" aria-modal="true">
         <nav class="flex flex-col items-center justify-center h-full space-y-8">
             <a href="#services" class="text-2xl text-slate-300 hover:text-white">Services</a>
@@ -416,23 +452,41 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12" data-aos="fade-up">
                     <h2 class="text-3xl md:text-4xl font-bold text-white font-montserrat">Ready to Grow Your Business?</h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Let's talk. Fill out the form below or schedule a free 30-minute strategy call to discuss your goals.</p>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Let's connect. Whether you'd like more information or want to schedule a free 30-minute consultation, we're here to help. Fill out the form below to get started.</p>
                 </div>
                 <div class="card-bg interactive-card p-8 md:p-12 rounded-2xl max-w-2xl mx-auto" data-aos="fade-up">
-                    <form id="contact-form" action="https://formspree.io/f/mldwoqpb" method="POST">
+                    <form id="contact-form" action="https://formspree.io/f/xzzappdo" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-bold text-slate-300 mb-2">Full Name</label>
-                                    <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-bold text-slate-300 mb-2">Email Address</label>
-                                    <input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                </div>
+                                <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-bold text-slate-300 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(___) ___-____" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <p id="phone-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid 10-digit phone number.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label for="email" class="block text-sm font-bold text-slate-300 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <p id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</p>
+                        </div>
+
+                        <div class="mt-6">
+                            <label for="inquiry-type" class="block text-sm font-bold text-slate-300 mb-2">I would like to:</label>
+                            <select id="inquiry-type" name="inquiry_type" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="get-info">Get more information</option>
+                                <option value="schedule-consultation">Schedule a free 30-min consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div id="info-fields" class="hidden">
                             <div class="mt-6">
-                                <label class="block text-sm font-bold text-slate-300 mb-2">What services are you interested in?</label>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                                <label class="block text-sm font-bold text-slate-300 mb-4">What services are you interested in?</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div class="flex items-center">
                                         <input id="service1" name="services[]" value="Business Presence Setup" type="checkbox" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-indigo-600 focus:ring-indigo-500">
                                         <label for="service1" class="ml-3 text-sm text-slate-300">Business Presence Setup</label>
@@ -460,17 +514,52 @@
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <label for="message" class="block text-sm font-bold text-slate-300 mb-2">Tell us about your business</label>
-                                <textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                                <label for="info-message" class="block text-sm font-bold text-slate-300 mb-2">Do you have any specific questions?</label>
+                                <textarea id="info-message" name="info_questions" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                             </div>
-                            <div class="mt-8 text-center">
-                                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
-                            </div>
-                        </form>
-                        <div id="success-message" class="hidden text-center py-8">
-                            <h3 class="text-2xl font-bold text-white mb-4">Thank You!</h3>
-                            <p class="text-slate-300">Your message has been sent successfully. We will get in touch with you soon.</p>
                         </div>
+
+                        <div id="consultation-fields" class="hidden">
+                            <div class="mt-6">
+                                <label class="block text-sm font-bold text-slate-300 mb-2">Preferred Day(s)</label>
+                                <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                    <div><input type="checkbox" id="day-mon" name="preferred_days[]" value="Monday" class="choice-input"><label for="day-mon" class="choice-label">Mon</label></div>
+                                    <div><input type="checkbox" id="day-tue" name="preferred_days[]" value="Tuesday" class="choice-input"><label for="day-tue" class="choice-label">Tue</label></div>
+                                    <div><input type="checkbox" id="day-wed" name="preferred_days[]" value="Wednesday" class="choice-input"><label for="day-wed" class="choice-label">Wed</label></div>
+                                    <div><input type="checkbox" id="day-thu" name="preferred_days[]" value="Thursday" class="choice-input"><label for="day-thu" class="choice-label">Thu</label></div>
+                                    <div><input type="checkbox" id="day-fri" name="preferred_days[]" value="Friday" class="choice-input"><label for="day-fri" class="choice-label">Fri</label></div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label class="block text-sm font-bold text-slate-300 mb-2">Preferred Time(s)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                    <div><input type="checkbox" id="time1" name="preferred_times[]" value="10-11 AM" class="choice-input"><label for="time1" class="choice-label">10-11 AM EST</label></div>
+                                    <div><input type="checkbox" id="time2" name="preferred_times[]" value="11-12 PM" class="choice-input"><label for="time2" class="choice-label">11-12 PM EST</label></div>
+                                    <div><input type="checkbox" id="time3" name="preferred_times[]" value="12-1 PM" class="choice-input"><label for="time3" class="choice-label">12-1 PM EST</label></div>
+                                    <div><input type="checkbox" id="time4" name="preferred_times[]" value="1-2 PM" class="choice-input"><label for="time4" class="choice-label">1-2 PM EST</label></div>
+                                    <div><input type="checkbox" id="time5" name="preferred_times[]" value="2-3 PM" class="choice-input"><label for="time5" class="choice-label">2-3 PM EST</label></div>
+                                    <div><input type="checkbox" id="time6" name="preferred_times[]" value="3-4 PM" class="choice-input"><label for="time6" class="choice-label">3-4 PM EST</label></div>
+                                    <div><input type="checkbox" id="time7" name="preferred_times[]" value="4-5 PM" class="choice-input"><label for="time7" class="choice-label">4-5 PM EST</label></div>
+                                    <div><input type="checkbox" id="time8" name="preferred_times[]" value="5-6 PM" class="choice-input"><label for="time8" class="choice-label">5-6 PM EST</label></div>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="consult-message" class="block text-sm font-bold text-slate-300 mb-2">Tell us about your business needs</label>
+                                <textarea id="consult-message" name="business_needs" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
+                        </div>
+                    </form>
+                    <div id="success-message-info" class="hidden text-center py-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-4">Thank You</h3>
+                        <p class="text-slate-300">Your request for information has been received. We will be in touch shortly with the details you requested.</p>
+                    </div>
+                     <div id="success-message-consultation" class="hidden text-center py-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-4">Thank You</h3>
+                        <p class="text-slate-300">Your consultation request has been submitted. We will contact you soon to confirm your appointment.</p>
                     </div>
                 </div>
             </div>
@@ -577,13 +666,67 @@
             }
 
             const contactForm = document.getElementById('contact-form');
-            const successMessage = document.getElementById('success-message');
+            const inquiryType = document.getElementById('inquiry-type');
+            const infoFields = document.getElementById('info-fields');
+            const consultationFields = document.getElementById('consultation-fields');
+            const successMessageInfo = document.getElementById('success-message-info');
+            const successMessageConsultation = document.getElementById('success-message-consultation');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+
+            function validateEmail(email) {
+                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            function validatePhone(phone) {
+                const justDigits = phone.replace(/[^\d]/g, '');
+                return justDigits.length === 10;
+            }
+
+            if (inquiryType) {
+                inquiryType.addEventListener('change', (e) => {
+                    if (e.target.value === 'schedule-consultation') {
+                        infoFields.classList.add('hidden');
+                        consultationFields.classList.remove('hidden');
+                    } else if (e.target.value === 'get-info') {
+                        infoFields.classList.remove('hidden');
+                        consultationFields.classList.add('hidden');
+                    } else {
+                        infoFields.classList.add('hidden');
+                        consultationFields.classList.add('hidden');
+                    }
+                });
+            }
 
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    let isFormValid = true;
+
+                    // Validate Email
+                    if (!validateEmail(emailInput.value)) {
+                        emailError.classList.remove('hidden');
+                        emailInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+
+                    // Validate Phone if it's not empty
+                    if (phoneInput.value && !validatePhone(phoneInput.value)) {
+                        phoneError.classList.remove('hidden');
+                        phoneInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+
+                    if (!isFormValid) {
+                        return; // Stop submission if any validation fails
+                    }
+
                     const formData = new FormData(contactForm);
+                    const inquiryValue = inquiryType.value;
                     
                     fetch(contactForm.action, {
                         method: 'POST',
@@ -595,7 +738,12 @@
                         if (response.ok) {
                             contactForm.parentElement.style.padding = '0'; // Collapse padding on success
                             contactForm.style.display = 'none';
-                            successMessage.style.display = 'block';
+                            
+                            if (inquiryValue === 'schedule-consultation') {
+                                successMessageConsultation.style.display = 'block';
+                            } else {
+                                successMessageInfo.style.display = 'block';
+                            }
                         } else {
                             response.json().then(data => {
                                 console.error('Form submission error:', data);
@@ -608,6 +756,34 @@
                     });
                 });
             }
+
+            if (emailInput) {
+                emailInput.addEventListener('input', () => {
+                    if (!emailError.classList.contains('hidden')) {
+                        emailError.classList.add('hidden');
+                        emailInput.classList.remove('input-error');
+                    }
+                });
+            }
+
+            if (phoneInput) {
+                phoneInput.addEventListener('input', (e) => {
+                    // Auto-format phone number
+                    let input = e.target.value.replace(/\D/g, '').substring(0, 10);
+                    let formatted = '';
+                    if(input.length > 0) formatted += '(' + input.substring(0,3);
+                    if(input.length > 3) formatted += ') ' + input.substring(3,6);
+                    if(input.length > 6) formatted += '-' + input.substring(6,10);
+                    e.target.value = formatted;
+                    
+                    // Hide error on input
+                    if (!phoneError.classList.contains('hidden')) {
+                        phoneError.classList.add('hidden');
+                        phoneInput.classList.remove('input-error');
+                    }
+                });
+            }
+
 
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
