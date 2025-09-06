@@ -460,6 +460,7 @@
                             <div>
                                 <label for="name" class="block text-sm font-bold text-slate-300 mb-2">Full Name</label>
                                 <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <p id="name-error" class="text-red-500 text-sm mt-1 hidden">Full Name is required.</p>
                             </div>
                             <div>
                                 <label for="phone" class="block text-sm font-bold text-slate-300 mb-2">Phone Number</label>
@@ -551,6 +552,7 @@
                         </div>
                         
                         <div class="mt-8 text-center">
+                             <p id="form-submission-error" class="text-red-500 text-sm mb-4 text-center hidden">Oops! There was a problem submitting your form. Please try again later.</p>
                             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-12 rounded-lg text-lg cta-button">Send Message</button>
                         </div>
                     </form>
@@ -672,11 +674,14 @@
             const consultationFields = document.getElementById('consultation-fields');
             const successMessageInfo = document.getElementById('success-message-info');
             const successMessageConsultation = document.getElementById('success-message-consultation');
+            const nameInput = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
             const emailInput = document.getElementById('email');
             const emailError = document.getElementById('email-error');
             const phoneInput = document.getElementById('phone');
             const phoneError = document.getElementById('phone-error');
             const inquiryError = document.getElementById('inquiry-error');
+            const formSubmissionError = document.getElementById('form-submission-error');
 
             function validateEmail(email) {
                 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -713,6 +718,24 @@
                     
                     let isFormValid = true;
 
+                    // Clear previous errors
+                    nameError.classList.add('hidden');
+                    nameInput.classList.remove('input-error');
+                    emailError.classList.add('hidden');
+                    emailInput.classList.remove('input-error');
+                    phoneError.classList.add('hidden');
+                    phoneInput.classList.remove('input-error');
+                    inquiryError.classList.add('hidden');
+                    inquiryType.classList.remove('input-error');
+                    formSubmissionError.classList.add('hidden');
+
+                    // Validate Name
+                    if (nameInput.value.trim() === '') {
+                        nameError.classList.remove('hidden');
+                        nameInput.classList.add('input-error');
+                        isFormValid = false;
+                    }
+                    
                     // Validate Inquiry Type
                     if (inquiryType.value === "") {
                         inquiryError.classList.remove('hidden');
@@ -760,13 +783,22 @@
                         } else {
                             response.json().then(data => {
                                 console.error('Form submission error:', data);
-                                alert('Oops! There was a problem submitting your form.');
+                                formSubmissionError.classList.remove('hidden');
                             })
                         }
                     }).catch(error => {
                         console.error('Network error:', error);
-                        alert('Oops! There was a problem submitting your form.');
+                        formSubmissionError.classList.remove('hidden');
                     });
+                });
+            }
+            
+            if (nameInput) {
+                nameInput.addEventListener('input', () => {
+                    if (!nameError.classList.contains('hidden')) {
+                        nameError.classList.add('hidden');
+                        nameInput.classList.remove('input-error');
+                    }
                 });
             }
 
