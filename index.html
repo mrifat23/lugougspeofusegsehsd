@@ -682,6 +682,7 @@
             const phoneError = document.getElementById('phone-error');
             const inquiryError = document.getElementById('inquiry-error');
             const formSubmissionError = document.getElementById('form-submission-error');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
 
             function validateEmail(email) {
                 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -761,6 +762,10 @@
                         return; // Stop submission if any validation fails
                     }
 
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 mx-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+
                     const formData = new FormData(contactForm);
                     const inquiryValue = inquiryType.value;
                     
@@ -772,7 +777,7 @@
                         }
                     }).then(response => {
                         if (response.ok) {
-                            contactForm.parentElement.style.padding = '0'; // Collapse padding on success
+                            contactForm.parentElement.style.padding = '0'; 
                             contactForm.style.display = 'none';
                             
                             if (inquiryValue === 'schedule-consultation') {
@@ -789,6 +794,10 @@
                     }).catch(error => {
                         console.error('Network error:', error);
                         formSubmissionError.classList.remove('hidden');
+                    }).finally(() => {
+                        // Restore button state
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Send Message';
                     });
                 });
             }
